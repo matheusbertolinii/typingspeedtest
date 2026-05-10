@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Typing Speed Test</title>
+
+    <style>
+        .attribution {
+            font-size: 0.6875rem;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-title">
+            <img src="assets/images/logo-small.svg" alt="">
+            <div class="sm-hide lg-show">
+                <h1>Typing Speed Test</h1>
+                <p>Type as fast as you can in 60 seconds</p>
+            </div>
+        </div>
+        <div class="hero-personal-best">
+            <img src="assets/images/icon-personal-best.svg" alt="">
+            <p><span class="font-gray"><span class="sm-hide lg-show">Personal </span>Best:</span> 90 WPM</p>
+        </div>
+    </header>
+
+    <section class="stats-command-container">
+        <article class="stats">
+            <p class="font-gray">WPM: <span class="font-white">40</span></p>
+            <span class="stats-border"></span>
+            <p class="font-gray">Accuracy: <span class="font-red">94%</span></p>
+            <span class="stats-border"></span>
+            <p class="font-gray">Time: <span class="font-yellow">0:46</span></p>
+        </article>
+
+        <div class="selectors-wrapper">
+            <article class="difficulty-selector">
+                <p class="sm-hide lg-show">Difficulty:</p>
+                <div>
+                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input">
+                    <label for="easy" class="btn label-input">Easy</label>
+                </div>
+                <div>
+                    <input type="radio" name="difficulty" id="medium" value="medium"
+                        class="sr-only radio-input sm-hide lg-show">
+                    <label for="medium" class="btn label-input sm-hide">Medium</label>
+                </div>
+                <div>
+                    <input type="radio" name="difficulty" id="hard" value="hard"
+                        class="sr-only radio-input sm-hide lg-show">
+                    <label for="hard" class="btn label-input sm-hide">Hard</label>
+                </div>
+                <!-- <button class="btn">
+                    <p>Easy</p>
+                </button>
+                <button class="btn sm-hide">
+                    <p>Medium</p>
+                </button>
+                <button class="btn sm-hide">
+                    <p>Hard</p>
+                </button> -->
+                <span></span>
+            </article>
+
+            <article class="mode-selector">
+                <p class="sm-hide lg-show">Mode:</p>
+                <div>
+                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input">
+                    <label for="timer" class="btn label-input">Timer (60s)</label>
+                </div>
+                <div>
+                    <input type="radio" name="mode" id="passage" value="passage"
+                        class="sr-only radio-input sm-hide lg-show">
+                    <label for="passage" class="btn label-input sm-hide">Passage</label>
+                </div>
+                <!-- <button class="btn">
+                    <p>Timed(60s)</p>
+                </button>
+                <button class="btn">
+                    <p>Passage</p>
+                </button> -->
+            </article>
+        </div>
+
+    </section>
+
+    <section class="challenge-area">
+        <textarea disabled class="challenge-textarea blur" name="challenge"
+            id="challenge">"Microplastics have infiltrated virtually every ecosystem on Earth, from the Mariana Trench to Arctic ice cores. These polymer fragments—smaller than 5mm in diameter—originate from degrading consumer products, synthetic textiles, and industrial processes. Researchers have detected them in human blood, placental tissue, and breast milk; their long-term health implications remain disturbingly unclear. The ubiquity of plastic pollution represents an unprecedented experiment on planetary biology."</textarea>
+        <div class="challenge-area-startup">
+            <button>Start Typing Test</button>
+            <p>Or click the text and start typing</p>
+        </div>
+    </section>
+
+    <!-- Passage
+
+    Start Typing Test
+    Or click the text and start typing
+
+    Test Complete Start
+
+    Test Complete!
+    Solid run. Keep pushing to beat your high score.
+
+    WPM: WPM
+    Accuracy: Accuracy
+    Characters: Correct/Incorrect
+
+    Go Again
+
+    Test Complete End -->
+</body>
+
+</html>
