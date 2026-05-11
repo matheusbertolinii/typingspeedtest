@@ -13,17 +13,6 @@
     <link rel="stylesheet" href="style.css">
 
     <title>Typing Speed Test</title>
-
-    <style>
-        .attribution {
-            font-size: 0.6875rem;
-            text-align: center;
-        }
-
-        .attribution a {
-            color: hsl(228, 45%, 44%);
-        }
-    </style>
 </head>
 
 <body>
@@ -54,7 +43,7 @@
             <article class="difficulty-selector">
                 <p class="sm-hide lg-show">Difficulty:</p>
                 <div>
-                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input">
+                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input" checked>
                     <label for="easy" class="btn label-input">Easy</label>
                 </div>
                 <div>
@@ -82,7 +71,7 @@
             <article class="mode-selector">
                 <p class="sm-hide lg-show">Mode:</p>
                 <div>
-                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input">
+                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input" checked>
                     <label for="timer" class="btn label-input">Timer (60s)</label>
                 </div>
                 <div>
@@ -102,10 +91,11 @@
     </section>
 
     <section class="challenge-area">
+        <div class="fake-placeholder placeholder"></div>
         <textarea disabled class="challenge-textarea blur" name="challenge"
             id="challenge">"Microplastics have infiltrated virtually every ecosystem on Earth, from the Mariana Trench to Arctic ice cores. These polymer fragments—smaller than 5mm in diameter—originate from degrading consumer products, synthetic textiles, and industrial processes. Researchers have detected them in human blood, placental tissue, and breast milk; their long-term health implications remain disturbingly unclear. The ubiquity of plastic pollution represents an unprecedented experiment on planetary biology."</textarea>
         <div class="challenge-area-startup">
-            <button>Start Typing Test</button>
+            <button id="startBtn">Start Typing Test</button>
             <p>Or click the text and start typing</p>
         </div>
     </section>
@@ -127,6 +117,8 @@
     Go Again
 
     Test Complete End -->
+
+    <script src="typingspeed.js"></script>
 </body>
 
 </html>
