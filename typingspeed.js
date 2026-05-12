@@ -1,6 +1,7 @@
 const startBtn = document.getElementById("startBtn")
 const startupArea = document.querySelector(".challenge-area-startup")
 const challengeTextArea = document.querySelector(".challenge-textarea")
+const restartBtn = document.querySelector(".restart-container")
 
 async function handleRandomText(difficulty) {
     const res = await fetch('./data.json')
@@ -10,7 +11,6 @@ async function handleRandomText(difficulty) {
 
     let challengeText = challengeTextArea.placeholder = data[difficulty][rnumber].text
 
-    console.log(challengeText)
     return challengeText
 }
 
@@ -26,21 +26,24 @@ async function handlePlaceholder(difficulty) {
 
 
 function handleStartGame() {
-    startupArea.classList.add("lg-hide")
+    startupArea.classList.add("lg-hide", "sm-hide")
     challengeTextArea.classList.remove("blur")
     challengeTextArea.disabled = false
     challengeTextArea.textContent = ""
     challengeTextArea.focus()
+    restartBtn.classList.remove("hide")
 
     handlePlaceholder(handleDifficulty())
 }
 
 /*"input" > compare the strings
-    if wrong red
+    if wrong
+        color red
+        swaps with right letter
     if right green
-
-
+        color green
     the .value[index] works on textarea
 */
 
 startBtn.addEventListener("click", handleStartGame)
+restartBtn.addEventListener("click", handleStartGame)
