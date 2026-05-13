@@ -216,6 +216,23 @@ body {
     cursor: pointer;
 }
 
+.actual {
+    background-color: #ddd2;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.correct {
+    color: green;
+    z-index: 2;
+}
+
+.wrong {
+    color: red;
+    text-decoration: underline;
+    z-index: 2;
+}
+
 .sm-hide {
     display: none;
 }
