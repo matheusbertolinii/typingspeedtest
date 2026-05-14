@@ -28,6 +28,7 @@ body {
     background-color: var(--color-bg);
     color: var(--primary-color-text);
     font-family: "Sora", serif;
+    max-height: 100vh;
 }
 
 .hero {
@@ -48,6 +49,9 @@ body {
 
 .stats-command-container {
     margin-top: var(--margin-default);
+    padding-bottom: var(--margin-default);
+    border-bottom: 1px solid var(--secondary-color-fade);
+    margin: 0 1rem;
 }
 
 .stats {
@@ -72,15 +76,15 @@ body {
     border-right: 1px solid var(--secondary-color-fade);
 }
 
-.font-red {
+.accuracy {
     color: var(--color-text-red);
 }
 
-.font-yellow {
+.timer {
     color: var(--color-text-yellow);
 }
 
-.font-white {
+.wpm {
     color: var(--primary-color-text);
 }
 
@@ -121,26 +125,34 @@ body {
 .challenge-area {
     position: relative;
     min-height: 18rem;
-    margin: 0 var(--margin-default);
-    border-top: 1px solid var(--secondary-color-fade);
-    /* border-bottom: 1px solid var(--secondary-color-fade); */
-    padding: 2rem 0;
+    padding: 1.5rem 0;
+    margin: 0 1rem;
 }
 
 .challenge-textarea {
     width: 100%;
+
     font-size: 1.8rem;
     line-height: 40px;
     font-weight: 400;
-    background-color: transparent;
+    font-family: "Sora";
+
+    background: transparent;
+    color: transparent;
+    caret-color: white;
+
     min-height: 59vh;
     max-width: 100%;
-    color: var(--secondary-color);
+
+    /* color: var(--secondary-color); */
+
     border: none;
     resize: none;
     outline: none;
     scrollbar-width: none;
-    font-family: "Sora";
+
+    position: relative;
+    inset: 2rem 0 0;
 
     white-space: pre-wrap;
     overflow-wrap: break-word;
@@ -152,12 +164,18 @@ body {
     font-size: 1.8rem;
     line-height: 40px;
     font-weight: 400;
-    max-height: 100vh;
-    max-width: 100%;
     color: rgb(149, 149, 151, .8);
+    max-width: 100%;
     background-color: transparent;
-    position: absolute;
-    z-index: -1;
+    padding: 0 1rem;
+
+    /* word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word; */
+}
+
+.span-container {
+    color: transparent;
 
     word-break: break-word;
     white-space: pre-wrap;
@@ -196,13 +214,6 @@ body {
     }
 }
 
-.restart-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 5rem;
-}
-
 .restart {
     display: flex;
     align-items: center;
@@ -215,6 +226,7 @@ body {
     padding: 1rem;
     color: var(--primary-color-text);
     cursor: pointer;
+    margin: 1em auto;
 }
 
 .actual {
@@ -292,7 +304,7 @@ body {
         align-items: center;
         /* border-bottom: 1px solid var(--secondary-color-fade); */
         height: max-content;
-        margin: 1rem var(--margin-default-lg);
+        margin: 1rem 0;
     }
 
     .stats {
@@ -331,6 +343,7 @@ body {
 
     .difficulty-selector {
         border-right: 1px solid var(--secondary-color-fade);
+        padding-right: 1rem;
     }
 
     .difficulty-selector,
@@ -354,6 +367,12 @@ body {
     .challenge-area button:focus {
         outline: 1px solid var(--color-btn-blue);
         outline-offset: 5px;
+    }
+
+    .challenge-area,
+    .placeholder {
+        margin: 0;
+        padding: 0;
     }
 
     .challenge-area button {

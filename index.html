@@ -32,18 +32,18 @@
 
     <section class="stats-command-container">
         <article class="stats">
-            <p class="font-gray">WPM: <span class="font-white">40</span></p>
+            <p class="font-gray">WPM: <span class="wpm">0</span></p>
             <span class="stats-border"></span>
-            <p class="font-gray">Accuracy: <span class="font-red">94%</span></p>
+            <p class="font-gray">Accuracy: <span class="accuracy">100.00%</span></p>
             <span class="stats-border"></span>
-            <p class="font-gray">Time: <span class="font-yellow">0:46</span></p>
+            <p class="font-gray">Time: <span class="timer">00:00</span></p>
         </article>
 
         <div class="selectors-wrapper">
             <article class="difficulty-selector">
                 <p class="sm-hide lg-show">Difficulty:</p>
                 <div>
-                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input" checked>
+                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input">
                     <label for="easy" class="btn label-input">Easy</label>
                 </div>
                 <div>
@@ -56,22 +56,12 @@
                         class="sr-only radio-input sm-hide lg-show">
                     <label for="hard" class="btn label-input sm-hide">Hard</label>
                 </div>
-                <!-- <button class="btn">
-                    <p>Easy</p>
-                </button>
-                <button class="btn sm-hide">
-                    <p>Medium</p>
-                </button>
-                <button class="btn sm-hide">
-                    <p>Hard</p>
-                </button> -->
-                <span></span>
             </article>
 
             <article class="mode-selector">
                 <p class="sm-hide lg-show">Mode:</p>
                 <div>
-                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input" checked>
+                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input">
                     <label for="timer" class="btn label-input">Timer (60s)</label>
                 </div>
                 <div>
@@ -91,17 +81,22 @@
     </section>
 
     <section class="challenge-area">
-        <div class="span-container placeholder"></div>
-        <div class="fake-placeholder placeholder"></div>
-        <textarea disabled class="challenge-textarea blur sr-only" name="challenge" id="challenge"></textarea>
+        <div class="span-container sr-only"></div>
+        <div class="fake-placeholder placeholder blur">"Microplastics have infiltrated virtually every ecosystem on
+            Earth,
+            from the Mariana Trench to Arctic ice cores. These polymer fragments - smaller than 5mm in diameter -
+            originate from degrading consumer products, synthetic textiles, and industrial processes. Researchers have
+            detected them in human blood, placental tissue, and breast milk; their long-term health implications remain
+            disturbingly unclear. The ubiquity of plastic pollution represents an unprecedented experiment on planetary
+            biology."
+        </div>
+        <textarea disabled class="challenge-textarea sr-only" name="challenge" id="challenge"></textarea>
         <div class="challenge-area-startup">
             <button id="startBtn">Start Typing Test</button>
             <p>Or click the text and start typing</p>
         </div>
     </section>
-    <div class="restart-container hide">
-        <button class="restart">Restart Test <img src="./assets/images/icon-restart.svg" alt=""></button>
-    </div>
+    <button class="restart hide">Restart Test <img src="./assets/images/icon-restart.svg" alt=""></button>
 
 
     <script src="typingspeed.js"></script>
