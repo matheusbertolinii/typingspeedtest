@@ -3,8 +3,8 @@ const startupArea = document.querySelector(".challenge-area-startup")
 const challengeArea = document.querySelector(".challenge-area")
 const challengeTextArea = document.querySelector(".challenge-textarea")
 const restartBtn = document.querySelector(".restart-container")
-const spanContainer = document.querySelector(".span-container")
-const fakePlaceholder = document.querySelector(".fake-placeholder")
+const textContainer = document.querySelector(".span-container")
+const placeholderContainer = document.querySelector(".fake-placeholder")
 
 
 async function handleRandomText(difficulty) {
@@ -29,7 +29,7 @@ function handleDifficulty() {
     return input.id
 }
 
-async function handlePlaceholder(difficulty) {
+async function chooseText(difficulty) {
     const divPlaceholder = document.querySelector(".fake-placeholder")
     divPlaceholder.textContent = await handleRandomText(difficulty)
     return divPlaceholder.textContent
@@ -37,61 +37,63 @@ async function handlePlaceholder(difficulty) {
 
 let input = ''
 
-function backspace(event, index) {
+
+challengeTextArea.addEventListener("input", changeColor)
+challengeTextArea.addEventListener("keydown", eventBackspace)
+
+function changeColor() {
+    const placeholderSpan = document.querySelectorAll(".fake-placeholder span")
+    placeholderSpan[0].classList.add("actual")
+    input = challengeTextArea.value
+    textContainer.textContent = ''
+    input.split('').forEach((el, index = 0) => {
+        const span = document.createElement("span")
+        span.textContent = el
+        if (index == placeholderSpan.length - 1) {
+            placeholderSpan[index].classList.remove("actual")
+        } else {
+            placeholderSpan[index].classList.remove("actual")
+            placeholderSpan[index + 1].classList.add("actual")
+        }
+
+        if (span.textContent === placeholderSpan[index].textContent) {
+            span.classList.add("correct")
+            placeholderSpan[index].style.color = "transparent"
+        } else if (span.textContent !== placeholderSpan[index].textContent) {
+            span.classList.add("wrong")
+            placeholderSpan[index].style.color = "transparent"
+            span.textContent = placeholderSpan[index].textContent
+        }
+        textContainer.appendChild(span)
+    })
+}
+
+
+function eventBackspace(event) {
+    const placeholderSpan = document.querySelectorAll(".fake-placeholder span")
     if (event.keyCode == 8) {
-        placeholderSpan[index].style.color = "inherit"
-        placeholderSpan[index].classList.remove("actual")
-        placeholderSpan[index + 1].classList.remove("actual")
+        placeholderSpan[challengeTextArea.value.length - 1].style.color = "inherit"
+        placeholderSpan[challengeTextArea.value.length].classList.remove("actual")
+        placeholderSpan[challengeTextArea.value.length + 1].classList.remove("actual")
     }
 }
 
-async function handleHits() {
-
-    let placeholder = [...await handlePlaceholder(handleDifficulty())]
-    fakePlaceholder.textContent = ''
+async function createPlaceholder() {
+    let placeholder = [...await chooseText(handleDifficulty())]
+    placeholderContainer.textContent = ''
     placeholder.forEach(el => {
         const span = document.createElement("span")
         span.textContent = el
-        fakePlaceholder.appendChild(span)
+        placeholderContainer.appendChild(span)
     })
-    const placeholderSpan = document.querySelectorAll(".fake-placeholder span")
-    placeholderSpan[0].classList.add("actual")
-
-    challengeTextArea.addEventListener("input", function changeColor() {
-        input = this.value
-        spanContainer.textContent = ''
-        input.split('').forEach((el, index = 0) => {
-            const span = document.createElement("span")
-            span.textContent = el
-            backspace(event, index)
-            if (index == placeholderSpan.length - 1) {
-                placeholderSpan[index].classList.remove("actual")
-            } else {
-                placeholderSpan[index].classList.remove("actual")
-                placeholderSpan[index + 1].classList.add("actual")
-            }
-
-            if (span.textContent === placeholderSpan[index].textContent) {
-                span.classList.add("correct")
-                placeholderSpan[index].style.color = "transparent"
-            } else if (span.textContent !== placeholderSpan[index].textContent) {
-                span.classList.add("wrong")
-                placeholderSpan[index].style.color = "transparent"
-                span.textContent = placeholderSpan[index].textContent
-            }
-            spanContainer.appendChild(span)
-        })
-    })
-    // challengeTextArea.addEventListener("keydown", backspace(event, index))
 }
 
 challengeArea.addEventListener("click", () => challengeTextArea.focus())
 
 function handleRestart() {
-    challengeTextArea.focus()
+    textContainer.replaceChildren()
+    placeholderContainer.replaceChildren()
     challengeTextArea.value = ''
-    spanContainer.replaceChildren()
-    fakePlaceholder.replaceChildren()
 
     handleStartGame()
 }
@@ -105,8 +107,8 @@ function handleStartGame() {
     challengeTextArea.focus()
     restartBtn.classList.remove("hide")
 
-    handlePlaceholder(handleDifficulty())
-    handleHits()
+    chooseText(handleDifficulty())
+    createPlaceholder()
 }
 
 /*"input" > compare the strings

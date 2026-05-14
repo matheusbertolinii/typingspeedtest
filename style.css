@@ -123,7 +123,7 @@ body {
     min-height: 18rem;
     margin: 0 var(--margin-default);
     border-top: 1px solid var(--secondary-color-fade);
-    border-bottom: 1px solid var(--secondary-color-fade);
+    /* border-bottom: 1px solid var(--secondary-color-fade); */
     padding: 2rem 0;
 }
 
@@ -152,7 +152,7 @@ body {
     font-size: 1.8rem;
     line-height: 40px;
     font-weight: 400;
-    min-height: 59vh;
+    max-height: 100vh;
     max-width: 100%;
     color: rgb(149, 149, 151, .8);
     background-color: transparent;
@@ -199,7 +199,8 @@ body {
 .restart-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    align-items: flex-start;
+    margin-top: 5rem;
 }
 
 .restart {
