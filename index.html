@@ -40,41 +40,38 @@
         </article>
 
         <div class="selectors-wrapper">
-            <article class="difficulty-selector">
+            <article class="difficulty-selector selector">
                 <p class="sm-hide lg-show">Difficulty:</p>
-                <div>
-                    <input type="radio" name="difficulty" id="easy" value="easy" class="sr-only radio-input">
-                    <label for="easy" class="btn label-input">Easy</label>
-                </div>
-                <div>
-                    <input type="radio" name="difficulty" id="medium" value="medium"
-                        class="sr-only radio-input sm-hide lg-show">
-                    <label for="medium" class="btn label-input sm-hide">Medium</label>
-                </div>
-                <div>
-                    <input type="radio" name="difficulty" id="hard" value="hard"
-                        class="sr-only radio-input sm-hide lg-show">
-                    <label for="hard" class="btn label-input sm-hide">Hard</label>
+                <button class="lg-hide menu-btn menu-diff-btn">Easy</button>
+                <div class="menu-diff menu">
+                    <label for="easy" class="lg-show sm-hide menu-item">
+                        <input type="radio" name="difficulty" id="easy" value="easy" class="radio-input lg-sr" checked>
+                        <span class="btn">Easy</span>
+                    </label>
+                    <label for="medium" class="lg-show sm-hide menu-item">
+                        <input type="radio" name="difficulty" id="medium" value="medium" class="radio-input lg-sr">
+                        <span class="btn">Medium</span>
+                    </label>
+                    <label for="hard" class="sm-hide lg-show menu-item">
+                        <input type="radio" name="difficulty" id="hard" value="hard" class="radio-input lg-sr">
+                        <span class="btn">Hard</span>
+                    </label>
                 </div>
             </article>
 
-            <article class="mode-selector">
+            <article class="mode-selector selector">
                 <p class="sm-hide lg-show">Mode:</p>
-                <div>
-                    <input type="radio" name="mode" id="timer" value="timer" class="sr-only radio-input">
-                    <label for="timer" class="btn label-input">Timer (60s)</label>
+                <button class="lg-hide menu-btn menu-mode-btn">Timer</button>
+                <div class="menu-mode menu">
+                    <label for="timer" class="sm-hide lg-show menu-item">
+                        <input type="radio" name="mode" id="timer" value="timer" class=" radio-input lg-sr" checked>
+                        <span class="btn">Timer</span>
+                    </label>
+                    <label for="passage" class="sm-hide lg-show menu-item">
+                        <input type="radio" name="mode" id="passage" value="passage" class="radio-input lg-sr">
+                        <span class="btn">Passage</span>
+                    </label>
                 </div>
-                <div>
-                    <input type="radio" name="mode" id="passage" value="passage"
-                        class="sr-only radio-input sm-hide lg-show">
-                    <label for="passage" class="btn label-input sm-hide">Passage</label>
-                </div>
-                <!-- <button class="btn">
-                    <p>Timed(60s)</p>
-                </button>
-                <button class="btn">
-                    <p>Passage</p>
-                </button> -->
             </article>
         </div>
 

@@ -1,7 +1,10 @@
 const startBtn = document.getElementById("startBtn")
 const restartBtn = document.querySelector(".restart")
-const difficultySelector = document.querySelector(".difficulty-selector input")
-
+const menuDiffBtn = document.querySelector(".menu-diff-btn")
+const menuModeBtn = document.querySelector(".menu-mode-btn")
+const difficultySelector = document.querySelectorAll(".menu-diff label")
+const modeSelector = document.querySelectorAll(".menu-mode label")
+const menu = document.querySelector(".sm-menu")
 
 const startupArea = document.querySelector(".challenge-area-startup")
 const challengeArea = document.querySelector(".challenge-area")
@@ -14,16 +17,70 @@ const timerDOM = document.querySelector(".timer")
 const wpmDOM = document.querySelector(".wpm")
 const accuracyDOM = document.querySelector(".accuracy")
 
+menuDiffBtn.addEventListener("click", (e) => {
+    e.stopPropagation()
+    toggleMenu(difficultySelector)
+    menuModeBtn.classList.remove("open")
+    menuDiffBtn.classList.toggle("open")
+})
+menuModeBtn.addEventListener("click", (e) => {
+    e.stopPropagation()
+    toggleMenu(modeSelector)
+    menuDiffBtn.classList.remove("open")
+    menuModeBtn.classList.toggle("open")
+})
 
-difficultySelector.addEventListener("click", (e) => {
-    console.log("clicked")
+difficultySelector.forEach(el => {
+    addEventListener("click", closeMenus)
+})
+
+modeSelector.forEach(el => {
+    addEventListener("click", closeMenus)
 })
 
 startBtn.addEventListener("click", handleStartGame)
 restartBtn.addEventListener("click", handleRestart)
+
 challengeTextArea.addEventListener("input", changeColor)
 challengeTextArea.addEventListener("keydown", eventBackspace)
 challengeArea.addEventListener("click", () => challengeTextArea.focus())
+
+
+
+
+function toggleMenu(menu) {
+    const menus = [
+        difficultySelector,
+        modeSelector
+    ]
+    const isAlreadyOpen =
+        [...menu].some(el => !el.classList.contains("sm-hide"))
+
+    menus.forEach(menu => {
+        menu.forEach(el => {
+            el.classList.add("sm-hide")
+        })
+    })
+    if (!isAlreadyOpen) {
+        menu.forEach(el => {
+            el.classList.remove("sm-hide")
+        })
+    }
+}
+
+function closeMenus() {
+    const menus = [
+        difficultySelector,
+        modeSelector
+    ]
+    menus.forEach(menu => {
+        menu.forEach(el => {
+            el.classList.add("sm-hide")
+        })
+    })
+    menuDiffBtn.textContent = handleSettings("difficulty").charAt(0).toUpperCase() + handleSettings("difficulty").slice(1)
+    menuModeBtn.textContent = handleSettings("mode").charAt(0).toUpperCase() + handleSettings("mode").slice(1)
+}
 
 async function handleRandomText(difficulty) {
     try {

@@ -101,7 +101,7 @@ body {
     }
 }
 
-.btn {
+.menu-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,10 +117,65 @@ body {
     cursor: pointer;
 }
 
-.btn::after {
+.menu-btn::after {
     content: url(assets/images/icon-down-arrow.svg);
+    transition: transform 0.3s ease;
 }
 
+.menu-btn.open::after {
+    transform: rotate(180deg);
+}
+
+.selector {
+    position: relative;
+    width: 200px;
+}
+
+.menu {
+    background-color: var(--color-btn-restart);
+    border-radius: 10px;
+    margin-top: 1rem;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+}
+
+.menu-item {
+    padding: 1rem;
+    width: 100%;
+}
+
+.menu-item:nth-child(2) {
+    border-bottom: 1px solid var(--secondary-color-fade);
+    border-top: 1px solid var(--secondary-color-fade);
+}
+
+.menu-item:has([id="passage"]) {
+    border-bottom: none;
+}
+
+input {
+    appearance: none;
+
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #999999;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+
+    position: relative;
+    top: 4px;
+}
+
+input:checked {
+    border: 5px solid var(--color-btn-blue);
+    background-color: black;
+}
 
 .challenge-area {
     position: relative;
@@ -267,20 +322,16 @@ body {
 }
 
 @media (width>=90em) {
-    .lg-show {
-        display: revert;
-    }
-
-    .lg-hide {
-        display: none;
-    }
-
     body {
         margin: 0 4rem;
     }
 
     .hero {
         margin: var(--margin-default-lg);
+    }
+
+    .sm-menu {
+        display: flex;
     }
 
     .hero-title {
@@ -296,6 +347,34 @@ body {
             font-size: 1rem;
             color: var(--secondary-color);
         }
+    }
+
+    .menu {
+        background-color: inherit;
+        border-radius: none;
+        margin-top: 1rem;
+        position: static;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        left: 0;
+        margin: 0;
+    }
+
+    .menu-item:nth-child(2) {
+        border: none;
+    }
+
+    .menu-item {
+        padding: 0;
+    }
+
+    .selector {
+        position: static;
+        width: auto;
+        display: flex;
+        align-items: center;
     }
 
     .stats-command-container {
@@ -347,23 +426,24 @@ body {
     }
 
     .difficulty-selector,
-    .mode-selector {
+    .mode-selector,
+    .menu {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    .radio-input:checked+.label-input {
+    .radio-input:checked+span {
         color: var(--color-btn-blue);
         border-color: var(--color-btn-blue);
     }
 
-    .radio-input:hover+.label-input {
+    .radio-input:hover+span {
         color: var(--color-btn-blue);
         border-color: var(--color-btn-blue);
     }
 
-    .radio-input:focus+.label-input,
+    .radio-input:focus+span,
     .challenge-area button:focus {
         outline: 1px solid var(--color-btn-blue);
         outline-offset: 5px;
@@ -383,4 +463,23 @@ body {
         }
     }
 
+    .lg-show {
+        display: revert;
+    }
+
+    .lg-hide {
+        display: none;
+    }
+
+    .lg-sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
 }
